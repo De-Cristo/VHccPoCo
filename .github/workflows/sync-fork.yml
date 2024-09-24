@@ -1,0 +1,35 @@
+name: Sync Fork
+
+on:
+  schedule:
+    # - cron: '0 0 * * *'  # This will run once a day at midnight UTC
+    - cron: '8 * * * *'  # This will run once 8 hours
+  workflow_dispatch:     # This allows you to run the workflow manually
+
+jobs:
+  update-fork:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout forked repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+
+      - name: Set up Git user
+        run: |
+          git config --global user.email "johnsonzhang9711@163.com"
+          git config --global user.name "De-Cristo"
+
+      - name: Add upstream repository
+        run: git remote add upstream https://github.com/cms-rwth/VHccPoCo.git
+
+      - name: Fetch upstream
+        run: git fetch upstream
+
+      - name: Merge upstream into fork
+        run: git merge upstream/main # Use the appropriate branch (main or master)
+
+      - name: Push changes
+        run: |
+          git push origin main
