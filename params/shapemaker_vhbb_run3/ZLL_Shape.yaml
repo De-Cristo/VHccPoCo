@@ -1,0 +1,173 @@
+input:
+  channel: "2L"
+  # eras: ["2022_preEE", "2022_postEE"]
+  eras: ["2022_preEE"]
+  variations: auto
+
+output:
+  shapes_file_name: "vhbb_shapes"
+
+config:
+  example_variable: "nBJets"
+  example_data: "DATA_DoubleMuon"
+  example_MC: "ZH_Hto2B_Zto2L"
+  example_subsample: "DYJetsToLL_FxFx__DiJet_bx"
+  example_category: "SR_2L2B_ll"
+
+categories:
+  SR_2L2B_ll:
+    observable: "GNN"
+    new_name: "Zll_SR"
+    
+  SR_ll_2J_cJ:
+    observable: "GNN"
+    new_name: "Zll_cc_SR"
+    
+  SR_2L2B_ee:
+    observable: "GNN"
+    new_name: "Zee_SR"
+    
+  SR_ee_2J_cJ:
+    observable: "GNN"
+    new_name: "Zee_cc_SR"
+    
+  SR_2L2B_mm:
+    observable: "GNN"
+    new_name: "Zmm_SR"
+    
+  SR_mm_2J_cJ:
+    observable: "GNN"
+    new_name: "Zmm_cc_SR"
+    
+  CR_ee_4J_TT:
+    observable: "dilep_pt_zoom"
+    new_name: "Zee_CR_TT"
+  CR_mm_4J_TT:
+    observable: "dilep_pt_zoom"
+    new_name: "Zmm_CR_TT"
+    
+  CR_LF_ll:
+    observable: "dibjet_m"
+    new_name: "Zll_CR_LF"
+  CR_LF_ee:
+    observable: "dibjet_m"
+    new_name: "Zee_CR_LF"
+  CR_LF_mm:
+    observable: "dibjet_m"
+    new_name: "Zmm_CR_LF"
+    
+  CR_B_ll:
+    observable: "dibjet_m"
+    new_name: "Zll_CR_B"
+  CR_B_ee:
+    observable: "dibjet_m"
+    new_name: "Zee_CR_B"
+  CR_B_mm:
+    observable: "dibjet_m"
+    new_name: "Zmm_CR_B"
+    
+  CR_mm_2J_HF:
+    observable: "dijet_m_zoom"
+    new_name: "Zmm_CR_HF"
+  CR_ee_2J_HF:
+    observable: "dijet_m_zoom"
+    new_name: "Zee_CR_HF"
+    
+  CR_BB_ll:
+    observable: "dibjet_m"
+    new_name: "Zll_CR_BB"
+  CR_BB_ee:
+    observable: "dibjet_m"
+    new_name: "Zee_CR_BB"
+  CR_BB_mm:
+    observable: "dibjet_m"
+    new_name: "Zmm_CR_BB"
+    
+  CR_ee_2J_CC:
+    observable: "dijet_m_zoom"
+    new_name: "Zee_CR_CC"
+  CR_mm_2J_CC:
+    observable: "dijet_m_zoom"
+    new_name: "Zmm_CR_CC"
+
+    
+sample_to_process_map:
+  DATA_EGamma: "data_obs"
+  DATA_DoubleMuon: "data_obs"
+  ZH_Hto2C_Zto2L: "ZH_hcc"
+  ZH_Hto2B_Zto2L: "ZH_hbb"
+  ggZH_Hto2C_Zto2L: "ggZH_hcc"
+  ggZH_Hto2B_Zto2L: "ggZH_hbb"
+  TTTo2L2Nu: "TTTo2L2Nu"
+  DYJetsToLL_FxFx: "Zj_inc"
+  DYJetsToLL_FxFx__DiJet_ll: "Zj_ll"
+  DYJetsToLL_FxFx__DiJet_cx: "Zj_cj"
+  DYJetsToLL_FxFx__DiJet_bx: "Zj_bj"
+  WW: "WW"
+  WZ: "WZ"
+  ZZ: "ZZ"
+  SingleTop: "SingleTop"
+  
+sample_to_merge_list:
+  VV: ["WW", "WZ", "ZZ"]
+  TT: ["TTTo2L2Nu", "TTToSemiLeptonic", "TTToHadrons"]
+  ST: ["SingleTop"]
+  VJet: ["DYJetsToLL_FxFx__DiJet_ll", "DYJetsToLL_FxFx__DiJet_cx", "DYJetsToLL_FxFx__DiJet_bx"]
+  # data_obs: ["DATA_EGamma", "DATA_DoubleMuon"]
+  
+bin_merging: 
+    Zll_SR:
+        signal_processes: ["ggZH_hbb", "ZH_hbb"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+    Zll_cc_SR:
+        signal_processes: ["ggZH_hcc", "ZH_hcc"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+    Zee_SR:
+        signal_processes: ["ggZH_hbb", "ZH_hbb"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+    Zee_cc_SR:
+        signal_processes: ["ggZH_hcc", "ZH_hcc"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+    Zmm_SR:
+        signal_processes: ["ggZH_hbb", "ZH_hbb"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+    Zmm_cc_SR:
+        signal_processes: ["ggZH_hcc", "ZH_hcc"]
+        target_uncertainty: 0.3
+        target_significance_loss: 0.005
+        minimum_signal: 0
+        epsilon: 0.05
+
+plotting:
+  enable: True
+  signal_scaling: 50
+  blinding:
+    Zll_SR:
+      GNN: [700, 1000]
+    Zll_cc_SR:
+      GNN: [700, 1000]
+    Zee_SR:
+      GNN: [700, 1000]
+    Zee_cc_SR:
+      GNN: [700, 1000]
+    Zmm_SR:
+      GNN: [700, 1000]
+    Zmm_cc_SR:
+      GNN: [700, 1000]
+  flatx:
+    - GNN

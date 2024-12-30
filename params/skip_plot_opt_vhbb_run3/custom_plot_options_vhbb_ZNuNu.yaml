@@ -3,7 +3,7 @@ plotting_style:
     Top:
       - TTToSemiLeptonic
       # - TTTo2L2Nu
-      # - TTToHadrons
+      - TTToHadrons
       - SingleTop
       
     VV:
@@ -14,21 +14,28 @@ plotting_style:
       - ZZ__DiJet_Zbb
       - ZZ__DiJet_Zcc
       - ZZ__DiJet_noHeavyZ   
+      
+    Hbb:
+      - ZH_Hto2B_Zto2Nu
+      - ggZH_Hto2B_Zto2Nu
+    Hcc:
+      - ZH_Hto2C_Zto2Nu
+      - ggZH_Hto2C_Zto2Nu
         
   exclude_samples:
 
-    # - DATA_MuonEG
-    # - DATA_DoubleMuon
+    - ZJetsToNuNu_NJPT_FxFx__DiJet_incl
+    - ZJetsToNuNu_1JPT_FxFx__DiJet_incl
     - WJetsToLNu_FxFx__DiJet_incl
-    - ZZ__DiJet_incl
     - WZ__DiJet_incl
+    - ZZ__DiJet_incl
     
   rescale_samples:
-    WJetsToLNu_FxFx: 1.00
+    ZJetsToNuNu_NJPT_FxFx: 1.00
 
   signal_samples:
-    WH_Hto2B_WtoLNu: 50
-    WH_Hto2C_WtoLNu: 50
+    Hbb: 50
+    Hcc: 50
       
   labels_mc:
   
@@ -37,28 +44,46 @@ plotting_style:
     WJetsToLNu_FxFx__DiJet_ll: W+lj
     WJetsToLNu_FxFx__DiJet_incl: WJet-Inc
     
-    WJetsToLNu_MLM: W+4j
+    ZJetsToNuNu_NJPT_FxFx__DiJet_bx: ZJ+bj
+    ZJetsToNuNu_NJPT_FxFx__DiJet_cx: ZJ+cj
+    ZJetsToNuNu_NJPT_FxFx__DiJet_ll: ZJ+lj
+    ZJetsToNuNu_NJPT_FxFx__DiJet_incl: ZJ-Inc
+    
+    ZJetsToNuNu_1JPT_FxFx__DiJet_bx: ZJ+bj
+    ZJetsToNuNu_1JPT_FxFx__DiJet_cx: ZJ+cj
+    ZJetsToNuNu_1JPT_FxFx__DiJet_ll: ZJ+lj
+    ZJetsToNuNu_1JPT_FxFx__DiJet_incl: ZJ-Inc
     
     # TTTo2L2Nu: TT2L
-    TTToSemiLeptonic: TT1L
+    # TTToSemiLeptonic: TT1L
     # TTToHadrons: TTHad
     
-    WH_Hto2C_WtoLNu: "$ZH\\to cc$"
-    WH_Hto2B_WtoLNu: "$ZH\\to bb$"
+    TOP: TOP
+    
+    Hcc: "$ZH\\to cc$"
+    Hbb: "$ZH\\to bb$"
     
   colors_mc:
-    TTTo2L2Nu: "#02baf7"
-    TTToSemiLeptonic: "#1ca8d6"
-    TTToHadrons: "#438aa1"
+    # TTTo2L2Nu: "#02baf7"
+    # TTToSemiLeptonic: "#1ca8d6"
+    # TTToHadrons: "#438aa1"
     
-    WH_Hto2B_WtoLNu: "#ff0000"
-    WH_Hto2C_WtoLNu: "#0088ff"
+    TOP: "#02baf7"
+    
+    Hbb: "#ff0000"
+    Hcc: "#0088ff"
 
+    ZJetsToNuNu_NJPT_FxFx__DiJet_bx:  "#f5f768"
+    ZJetsToNuNu_NJPT_FxFx__DiJet_cx:  "#e3e146"
+    ZJetsToNuNu_NJPT_FxFx__DiJet_ll:  "#adab10"
+    
+    ZJetsToNuNu_1JPT_FxFx__DiJet_bx:  "#f5f768"
+    ZJetsToNuNu_1JPT_FxFx__DiJet_cx:  "#e3e146"
+    ZJetsToNuNu_1JPT_FxFx__DiJet_ll:  "#adab10"
+    
     WJetsToLNu_FxFx__DiJet_bx:  "#54f06e"
     WJetsToLNu_FxFx__DiJet_cx:  "#13b02d"
     WJetsToLNu_FxFx__DiJet_ll:  "#026613"
-    
-    WJetsToLNu_MLM: "#0c4516"
 
   # blind_hists:
   #   categories: [SR_LNu2B_ln,SR_LNu2B_en,SR_LNu2B_mn]
